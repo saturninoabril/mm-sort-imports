@@ -1,0 +1,18 @@
+{
+  "name": "mm-sort-imports",
+  "author": "Saturnino Abril",
+  "version": "1.0.0",
+  "description": "A JS Codemode to sort/organise mattermost imports",
+  "repository": "https://github.com/saturninoabril/mm-sort-imports",
+  "main": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "mm-sort-imports": "./cli.js"
+  },
+  "dependencies": {
+    "find-root": "^1.0.0",
+    "jscodeshift": "0.3.31"
+  }
+}
