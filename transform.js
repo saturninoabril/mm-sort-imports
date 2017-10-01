@@ -129,6 +129,7 @@ function createOutputImports(newImports, kind) {
     const dependencyImports = {};
     const devDependencyImports = {};
     const mattermostImports = {};
+    const nonNpmDependencyImports = {};
     const localImports1 = {};
     const localImports2 = {};
     const localImports3 = {};
@@ -155,7 +156,9 @@ function createOutputImports(newImports, kind) {
             devDependencyImports[key] = newImports[key];
         } else if (mattermostModules.indexOf(k) > -1) {
             mattermostImports[key] = newImports[key];
-        } else if (["actions", "dispatcher", "reducers", "selectors", "store", "stores"].indexOf(k) > -1) {
+        }  else if (["janus", "jquery-dragster", "katex"].indexOf(k) > -1) {
+            nonNpmDependencyImports[key] = newImports[key];
+        }  else if (["actions", "dispatcher", "reducers", "selectors", "store", "stores"].indexOf(k) > -1) {
             localImports1[key] = newImports[key];
         }  else if (["client", "config", "plugins", "routes"].indexOf(k) > -1) {
             localImports2[key] = newImports[key];
@@ -180,6 +183,7 @@ function createOutputImports(newImports, kind) {
     const dependencyKeys = Object.keys(dependencyImports).sort(importSortFunc).reverse();
     const devDependencyKeys = Object.keys(devDependencyImports).sort(importSortFunc).reverse();
     const mattermostKeys = Object.keys(mattermostImports).sort(importSortFunc).reverse();
+    const nonNpmDependencyKeys = Object.keys(nonNpmDependencyImports).sort(importSortFunc).reverse();
     const localKeys1 = Object.keys(localImports1).sort(importSortFunc).reverse();
     const localKeys2 = Object.keys(localImports2).sort(importSortFunc).reverse();
     const localKeys3 = Object.keys(localImports3).sort(importSortFunc).reverse();
@@ -214,6 +218,7 @@ function createOutputImports(newImports, kind) {
     pushImports(localKeys3);
     pushImports(localKeys2);
     pushImports(localKeys1);
+    pushImports(nonNpmDependencyKeys);
     pushImports(mattermostKeys);
     pushImports(devDependencyKeys);
     pushImports(dependencyKeys);
