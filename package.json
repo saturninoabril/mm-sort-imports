@@ -13,6 +13,6 @@
   },
   "dependencies": {
     "find-root": "^1.0.0",
-    "jscodeshift": "0.3.31"
+    "jscodeshift": "0.3.32"
   }
 }

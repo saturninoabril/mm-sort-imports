@@ -113,7 +113,7 @@ module.exports = function(file, api) {
     });
 
     root.get().node.comments = comments;
-    let source = root.toSource({ quote: 'single', objectCurlySpacing: false });
+    let source = root.toSource({ quote: 'single', objectCurlySpacing: false, lineTerminator: '\n' });
     source = source.replace(/\/\/\$\$BLANK_LINE\n\n/g, '//$$$BLANK_LINE\n');
     return source.replace(/\/\/\$\$BLANK_LINE/g, '');
 };
